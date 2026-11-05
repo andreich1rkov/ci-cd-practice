@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_HUB_REPO   = 'andreich1rkov/ci-cd-practice'
+        DOCKER_HUB_REPO   = 'andre1chirkov/ci-cd-practice'
         DOCKER_HUB_CRED_ID = 'docker-hub-credentials'
         IMAGE_TAG          = "${env.BUILD_NUMBER}"
     }
