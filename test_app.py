@@ -6,7 +6,7 @@ def test_add():
 
 
 def test_health():
-    client = app.test_client()  # "виртуальный браузер": сервер запускать не нужно
+    client = app.test_client()
     response = client.get("/health")
     assert response.status_code == 200
     assert response.get_json() == {"status": "ok"}
