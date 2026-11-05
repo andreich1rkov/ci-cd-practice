@@ -65,7 +65,7 @@ pipeline {
 
                     sleep 3
 
-                    curl -fsS http://localhost:${APP_PORT}/health
+                    curl -fsS http://host.docker.internal:${APP_PORT}/health
                 '''
             }
         }
