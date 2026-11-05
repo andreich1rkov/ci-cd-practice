@@ -1,0 +1,17 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.git/
+.github/
+.gitlab-ci.yml
+.gitignore
+Jenkinsfile
+Dockerfile
+.dockerignore
+README.md
+test_*.py
+requirements-dev.txt
+report.xml
