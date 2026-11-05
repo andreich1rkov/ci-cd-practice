@@ -5,7 +5,7 @@ pipeline {
         DOCKER_HUB_CRED_ID = 'docker-hub-credentials'
         IMAGE_TAG          = "${env.BUILD_NUMBER}"
         APP_CONTAINER_NAME = 'ci-cd-practice-app'
-        APP_PORT           = '5000'
+        APP_PORT           = '5001'
     }
     stages {
         stage('Checkout') {
