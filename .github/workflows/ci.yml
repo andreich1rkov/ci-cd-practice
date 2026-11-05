@@ -1,0 +1,27 @@
+# Название пайплайна - отображается во вкладке Actions
+name: CI
+
+# Триггер: КОГДА запускать пайплайн
+on:
+  push:                          # при каждом push, то есть при каждом отправленном коммите
+
+jobs:                            # ЧТО выполнять: набор задач (jobs)
+  build:                         # имя задачи
+    runs-on: ubuntu-latest       # ГДЕ: чистая виртуальная машина Ubuntu от GitHub
+    steps:                       # КАК: шаги выполняются по порядку, упал один - пайплайн красный
+      - name: Забрать код из репозитория
+        uses: actions/checkout@v7
+
+      - name: Установить Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Установить зависимости
+        run: pip install -r requirements-dev.txt
+
+      - name: Сборка (проверка, что код компилируется)
+        run: python -m py_compile app.py
+
+      - name: Запустить тесты
+        run: pytest -v
