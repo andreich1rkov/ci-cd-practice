@@ -5,7 +5,7 @@ pipeline {
         DOCKER_HUB_CRED_ID = 'docker-hub-credentials'
         IMAGE_TAG          = "${env.BUILD_NUMBER}"
         APP_CONTAINER_NAME = 'ci-cd-practice-app'
-        APP_PORT           = '8081'
+        APP_PORT           = '5001'
     }
     stages {
         stage('Checkout') {
@@ -60,7 +60,7 @@ pipeline {
                     docker run -d \
                         --name ${APP_CONTAINER_NAME} \
                         --restart unless-stopped \
-                        -p ${APP_PORT}:8081 \
+                        -p ${APP_PORT}:5001 \
                         ${DOCKER_HUB_REPO}:${IMAGE_TAG}
 
                     sleep 3
