@@ -84,6 +84,7 @@ pipeline {
                           "$SLACK_URL"
                     '''
                 }
+            }
             cleanWs()
         }
     }
