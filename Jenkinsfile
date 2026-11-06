@@ -76,6 +76,14 @@ pipeline {
         }
         always {
             sh 'docker logout || true'
+            withEnv(["STATUS=${currentBuild.currentResult}"]) {
+                withCredentials([string(credentialsId: 'slack-webhook', variable: 'SLACK_URL')]) {
+                    sh '''
+                        curl -sS -X POST -H 'Content-type: application/json' \\
+                          --data "{\\"text\\": \\"Jenkins: ${JOB_NAME} #${BUILD_NUMBER} - ${STATUS}\\n${BUILD_URL}\\"}" \\
+                          "$SLACK_URL"
+                    '''
+                }
             cleanWs()
         }
     }
